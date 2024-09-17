@@ -1,0 +1,87 @@
+Evento:
+- nombre
+- fecha
+- horario: Horario
+- entradas: Entrada
+- precioEntrada
+- tipo: TipoEvento
+- año
+- actoresPrincipales: Persona
+- paisOrigen: Pais
+- director: Persona
++ conocerHorario()
++ conocerTipo()
++ conocerActoresPrincipales()
++ conocerPaisOrigen()
++ conocerDirector()
++ calcCantEntradas()
++ verificarEntradasDisponibles()
+
+TipoEvento:
+- nombre
+
+Horario:
+- horaInicio
+- horaFin
++ calcDuracion()
+
+Pais:
+- nombre
+
+Persona:
+- nombre
+- apellido
+- tipoPersona: TipoPersona
++ conocerTipoPersona()
++ esActor()
++ esDirector()
++ esSocio()
++ esCliente()
+
+TipoPersona:
+- nombre
+
+Cliente:
+(hereda de Persona)
+- dni
++ verificarSiEsSocio()
+
+Socio:
+(hereda de Persona)
+- fechaAsociacion
+- dni
+- telefono
+- email
+
+PagoCuotas:
+- fechaPago
+- cuotas: Cuota
++ conocerCuotas()
++ calcTotal()
+
+Cuota:
+- mes
+- año
+- socio: Socio
+- monto
+- estado: Estado
++ conocerSocio()
++ conocerEstado()
+
+Estado:
+- nombre
+
+Entrada:
+- codigo
+- socio: Socio
++ conocerSocio()
+
+VentaEntrada:
+- cliente: Cliente
+- entradas: Entrada
+- tieneDescuento
++ conocerCliente()
++ verificarDescuento()
++ conocerEntradas()
++ calcCantEntradas()
++ calcTotal()
