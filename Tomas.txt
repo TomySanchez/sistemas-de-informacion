@@ -85,3 +85,25 @@ VentaEntrada:
 + conocerEntradas()
 + calcCantEntradas()
 + calcTotal()
+
+-----------------------------------------------
+
+Patrones:
+
+VentaEntrada-Boletero = Asociacion
+VentaEntrada-Evento = Asociacion
+Entrada-VentaEntrada = Item-Transaccion
+Cliente-VentaEntrada = Asociacion
+Evento-Entrada = Asociacion
+Evento-Persona = Asociacion
+Evento-Pais = Asociacion
+Evento-Horario = Asociacion
+Evento-TipoEvento = Asociacion
+Persona-TipoPersona = Asociacion
+Persona-Cliente = Actor-Participante
+Socio-Entrada = Asociacion
+Cliente-Socio = Actor-Participante
+Socio-PagoCuotas = Asociacion
+Administrativo-PagoCuotas = Asociacion
+Cuota-PagoCuotas = Item-Transaccion
+Cuota-Estado = Asociacion
