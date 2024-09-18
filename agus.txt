@@ -1,1 +1,67 @@
-Holiwis
+SalaDeEventos
+Atributos:
+- capacidad: int
+- actividadesDiariasMax: int
+Métodos:
++ definirHorario(evento: Evento): void
++ definirPrecio(evento: Evento, precio: float): void
+
+Evento
+Atributos:
+- nombre: String
+- actoresPrincipales: String[]
+- tipoEvento: String
+- paisOrigen: String
+- anioRealizacion: int
+- director: String
+- precioEntrada: float
+Métodos:
++ publicarDetalles(): void
++ obtenerDetalles(): String
+
+Socio
+Atributos:
+- nombre: String
+- dni: String
+- cuotaMensual: float
+- cuotasAdeudadas: int
+Métodos:
++ pagarCuota(monto: float): void
++ calcularTotalAdeudado(): float
++ obtenerDescuento(): float
+
+Boletero
+Atributos:
+- nombre: String
+- idEmpleado: String
+Métodos:
++ verificarSocio(dni: String): Socio
++ verificarDisponibilidadEntradas(evento: Evento): boolean
++ registrarVenta(socio: Socio, evento: Evento, entradas: Entrada[]): void
+
+Entrada
+Atributos:
+- evento: Evento
+- cantidad: int
+- precioTotal: float
+Métodos:
++ emitirTicket(): Ticket
++ calcularPrecioTotal(): float
+
+Administrativo
+Atributos:
+- nombre: String
+- idEmpleado: String
+Métodos:
++ registrarCuota(socio: Socio, monto: float): void
++ emitirRecibo(socio: Socio): Recibo
+
+Municipalidad
+Atributos:
+- nombre: String
+- listaEventos: Evento[]
+- listaSocios: Socio[]
+Métodos:
++ agregarSocio(socio: Socio): void
++ agregarEvento(evento: Evento): void
++ gestionarSocios(): void
