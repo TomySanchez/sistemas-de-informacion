@@ -1,9 +1,16 @@
 Requerimientos funcionales:
+Gestión de eventos:
 -El sistema debe permitir que se registren los diferentes eventos a realizar. Se debe poder incluir información detallada como nombre, actores principales, tipo de evento, país de origen, año de realización y precio de entrada.
 -Se debe poder definir los horarios de cada evento, de modo tal que sólo puedan realizarse hasta dos eventos por día.
+
+Administración de socios:
 -El sistema debe permitir que se registren socios, a partir de sus datos personales. Se debe registrar el pago de una cuota inicial.
 -El sistema debe permitir registrar el pago de cuotas y, en caso de cuotas pendientes, calcular el saldo adeudado, permitiendo el pago completo.
 -Al momento de realizar la venta de entradas, si el cliente es socio con cuotas al día, el sistema debe aplicar un descuento del 5%.
+
+Gestión de venta de entradas:
 -El sistema debe permitir la venta de entradas, registro de pago y emisión de ticket.
 -Se necesita que el boletero, pueda corroborar la disponibilidad de entradas al momento de la venta.
+
+Generación de informes:
 -Se debe poder generar informes sobre los eventos realizados y entradas vendidas.
