@@ -1,0 +1,174 @@
+@startuml
+class Evento {
+  - nombre: String
+  - fecha: Date
+  - horario: Horario
+  - entradas: List<Entrada>
+  - precioEntrada: Double
+  - tipo: TipoEvento
+  - año: int
+  - actoresPrincipales: List<Persona>
+  - paisOrigen: Pais
+  - director: Persona
+  + getEvento()
+  + setEvento()
+  + conocerHorario(): Horario
+  + conocerTipo(): TipoEvento
+  + conocerActoresPrincipales(): List<Persona>
+  + conocerPaisOrigen(): Pais
+  + conocerDirector(): Persona
+  + calcCantEntradas(): int
+  + verificarEntradasDisponibles(): boolean
+}
+
+class TipoEvento {
+  - nombre: String
+  + getTipoEvento()
+  + setTipoEvento()
+}
+
+class Horario {
+  - horaInicio: Time
+  - horaFin: Time
+  + getHorario()
+  + setHorario()
+  + calcDuracion(): Duration
+}
+
+class Pais {
+  - nombre: String
+  + getPais()
+  + setPais()
+}
+
+class Persona {
+  - nombre: String
+  - apellido: String
+  - tipoPersona: TipoPersona
+  + getPersona()
+  + setPersona()
+  + conocerTipoPersona(): TipoPersona
+}
+
+class TipoPersona {
+  - nombre: String
+  + getTipoPersona()
+  + setTipoPersona()
+}
+
+class Cliente extends Persona {
+  - dni: String
+  + getCliente()
+  + setCliente()
+  + verificarSiEsSocio(): boolean
+}
+
+class Socio extends Cliente {
+  - fechaAsociacion: Date
+  - telefono: String
+  - email: String
+  + getSocio()
+  + setSocio()
+}
+
+class PagoCuotas {
+  - fechaPago: Date
+  - cuotas: List<Cuota>
+  - administrativo: Administrativo
+  + getPagoCuotas()
+  + setPagoCuotas()
+  + conocerAdministrativo()
+  + conocerCuotas(): List<Cuota>
+  + calcTotal(): double
+}
+
+class Cuota {
+  - mes: int
+  - año: int
+  - monto: double
+  - estado: Estado
+  + getCuota()
+  + setCuota()
+  + conocerEstado(): Estado
+}
+
+class Estado {
+  - nombre: String
+  + getEstado()
+  + setEstado()
+}
+
+class Entrada {
+  - codigo: String
+  - socio: Socio
+  - precio : int
+  + getEntrada()
+  + setEntrada()
+  + conocerSocio(): Socio
+}
+
+class VentaEntrada {
+  - cliente: Cliente
+  - tieneDescuento: boolean
+  - boletero: Boletero
+  - detalleVenta: DetalleVenta
+  + getVentaEntrada()
+  + setVentaEntrada()
+  + conocerBoletero()
+  + conocerEvento()
+  + conocerEntradas()
+  + conocerCliente()
+  + verificarDescuento(): boolean
+  + calcTotal(): double
+}
+
+class DetalleVenta {
+  - evento: Evento
+  - entrada: List<Entrada>
+  - cantidadEntradas: int
+  + getDetalleVenta()
+  + setDetalleVenta()
+  + calcularTotal()
+}
+
+class Boletero {
+  - nombre: String
+  - id: int
+  + getBoletero()
+  + setBoletero()
+  + verificarDisponibilidadEntradas(): boolean
+  + registrarVentaEntrada(VentaEntrada): void
+}
+
+class Administrativo {
+  - nombre: String
+  - id: int
+  + getAdministrativo()
+  + setAdministrativo()
+  + registrarPagoCuota(PagoCuotas): void
+}
+
+Evento --> "1" TipoEvento
+Evento --> "1" Horario
+Evento --> "1..*" Entrada
+Evento --> "1..*" Persona : actoresPrincipales
+Evento --> "1" Pais
+Evento --> "1" Persona : director
+
+Persona --> "1" TipoPersona
+
+Cuota --> "1" Estado
+
+Entrada --> "1" Socio
+VentaEntrada --> "1" Cliente
+VentaEntrada --> "1..*" Entrada
+VentaEntrada --> "1" Evento
+
+DetalleVenta "1..*" <--o VentaEntrada
+
+Socio --> "0..*" PagoCuotas
+PagoCuotas --> "1..*" Cuota
+
+Boletero "1" <-- VentaEntrada
+Administrativo <-- "1" PagoCuotas
+@enduml
