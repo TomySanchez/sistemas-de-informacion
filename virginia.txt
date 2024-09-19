@@ -17,4 +17,94 @@ hay entradas disponibles, realiza el cobro y registra la venta, emitiendo un tic
 entregando las entradas al cliente. Si el cliente es socio y tiene sus cuotas al día, recibe
 un descuento del 5% en el valor total de las entradas.
 
-clases: encargado (nombre, dni, horarios defnidos, entradas definidas), evento (nombre, actores principales, tipo, pais de origen, director), socio (nombre, apellido, dni, cuotas pagadas),cliente (nombre, dni), municipalidad, administrativo,.
+
+Evento
+Atributos:
+- ID_Evento
++ Nombre
++ Actores_principales
++ Tipo_evento
++ País_origen
++ Año_realización
++ Director
++ Fecha
++ Horario
++ Precio_entrada
+Métodos:
++ publicarEvento(): void
++ definirPrecio(): void
+
+Encargado
+Atributos:
+- ID_Encargado
++ Nombre
++ Horarios_asignados
++ Precio_entrada_definido
+Métodos:
++ asignarHorario()
++ definirPrecioEvento()
+
+Socio
+Atributos:
+- ID_Socio
++ Nombre
++ Documento
++ Dirección
++ Teléfono
++ Fecha_asociación
++ Cuotas_pagadas
++ Cuotas_adeudadas
+Métodos:
++ pagarCuota(): void
++ consultarEstadoCuotas(): String
+
+Administrativo
+Atributos:
+- ID_Administrativo
++ Nombre
++ Registro_cuotas_recibidas
+Métodos:
++ registrarCuota(): void
++ emitirRecibo(): void
+
+Boletero
+Atributos:
+- ID_Boletero
++ Nombre
++ Número_ventas_realizadas
+Métodos:
++ verificarSocio()
++ realizarVenta()
+
+Venta
+Atributos:
+- ID_Venta
++ ID_Cliente
++ ID_Evento
++ Fecha_compra
++ Cantidad_entradas
++ Total_venta
++ Descuento_aplicado
+Métodos:
++ registrarVenta(): void
++ aplicarDescuento(): void
+
+Entrada
+Atributos:
+- ID_Entrada
++ ID_Evento
++ Número_asiento
++ Precio
+Métodos:
++ generarEntrada(): void
+
+Recibo
+Atributos:
+- ID_Recibo
++ ID_Socio
++ Monto_total
++ Fecha_emisión
++ Cantidad_cuotas_pagadas
+Métodos:
++ emitirRecibo(): void
++ calcularMontoAdeudado(): float
