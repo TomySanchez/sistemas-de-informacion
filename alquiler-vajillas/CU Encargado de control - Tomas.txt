@@ -1,0 +1,6 @@
+- Consultar pedido
+<include>
+- Verificar vajilla
+- Registrar devolución
+- Cambiar estado del pedido a cumplido
+- Registrar observaciones
