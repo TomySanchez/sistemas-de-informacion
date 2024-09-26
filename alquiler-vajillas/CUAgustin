@@ -1,0 +1,4 @@
+Actor: Dueño
+Casos de uso: 
+-Consultar datos del cliente.
+-Determinar calificación del cliente.
