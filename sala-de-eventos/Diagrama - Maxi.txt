@@ -1,0 +1,122 @@
+@startuml
+class Evento {
+  - nombre: String
+  - fecha: Date
+  - horario: Horario
+  - entradas: List<Entrada>
+  - precioEntrada: Double
+  - tipo: TipoEvento
+  - año: int
+  - actoresPrincipales: List<Persona>
+  - paisOrigen: Pais
+  - director: Persona
+  + conocerHorario(): Horario
+  + conocerTipo(): TipoEvento
+  + conocerActoresPrincipales(): List<Persona>
+  + conocerPaisOrigen(): Pais
+  + conocerDirector(): Persona
+  + calcCantEntradas(): int
+  + verificarEntradasDisponibles(): boolean
+}
+
+class TipoEvento {
+  - nombre: String
+}
+
+class Horario {
+  - horaInicio: Time
+  - horaFin: Time
+  + calcDuracion(): Duration
+}
+
+class Pais {
+  - nombre: String
+}
+
+class Persona {
+  - nombre: String
+  - apellido: String
+  - tipoPersona: TipoPersona
+  + conocerTipoPersona(): TipoPersona
+  + esActor(): boolean
+  + esDirector(): boolean
+  + esSocio(): boolean
+  + esCliente(): boolean
+}
+
+class TipoPersona {
+  - nombre: String
+}
+
+class Cliente extends Persona {
+  - dni: String
+  + verificarSiEsSocio(): boolean
+}
+
+class Socio extends Persona {
+  - fechaAsociacion: Date
+  - dni: String
+  - telefono: String
+  - email: String
+}
+
+class PagoCuotas {
+  - fechaPago: Date
+  - cuotas: List<Cuota>
+  + conocerCuotas(): List<Cuota>
+  + calcTotal(): double
+}
+
+class Cuota {
+  - mes: int
+  - año: int
+  - socio: Socio
+  - monto: double
+  - estado: Estado
+  + conocerSocio(): Socio
+  + conocerEstado(): Estado
+}
+
+class Estado {
+  - nombre: String
+}
+
+class Entrada {
+  - codigo: String
+  - socio: Socio
+  + conocerSocio(): Socio
+}
+
+class VentaEntrada {
+  - cliente: Cliente
+  - entradas: List<Entrada>
+  - tieneDescuento: boolean
+  + conocerCliente(): Cliente
+  + verificarDescuento(): boolean
+  + conocerEntradas(): List<Entrada>
+  + calcCantEntradas(): int
+  + calcTotal(): double
+}
+
+Evento "1" -- "1" TipoEvento
+Evento "1" -- "1" Horario
+Evento "1" -- "1..*" Entrada
+Evento "1" -- "1..*" Persona : actoresPrincipales
+Evento "1" -- "1" Pais : paisOrigen
+Evento "1" -- "1" Persona : director
+
+Persona "1" -- "1" TipoPersona
+Cliente --|> Persona
+Socio --|> Persona
+
+Socio "1" -- "0..*" Cuota
+Cuota "1" -- "1" Estado
+Cuota "1" -- "1" Socio
+
+Entrada "1" -- "1" Socio
+VentaEntrada "1" -- "1" Cliente
+VentaEntrada "1" -- "1..*" Entrada
+
+Socio "1" -- "0..*" PagoCuotas
+PagoCuotas "1" -- "0..*" Cuota
+@enduml
