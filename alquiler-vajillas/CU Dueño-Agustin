@@ -2,6 +2,6 @@ Actor: Dueño
 Casos de uso: 
 -Consultar datos del cliente.
 
-            <inclued>
+            <include>
 
 -Determinar calificación del cliente.
