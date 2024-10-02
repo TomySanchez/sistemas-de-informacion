@@ -1,0 +1,4 @@
+-Registrar calificación cliente
+-Modificar calificación cliente
+-Consultar calificación cliente
+-Eliminar calificación cliente

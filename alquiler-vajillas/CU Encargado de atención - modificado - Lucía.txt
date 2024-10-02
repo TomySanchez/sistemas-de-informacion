@@ -1,0 +1,12 @@
+-Consultar precio de vajilla
+-Consultar disponibilidad de vajilla
+-Registrar pedido
+-Registrar nuevo cliente <include> Registrar pedido
+-Consulta datos de cliente
+-Modificar datos de cliente
+-Consultar calificación cliente <extend> Registrar pedido
+-Consultar descuento de cliente <extend> Consultar calificación cliente
+-Consultar vajilla dañada
+-Registrar facturación de servicio
+-Registrar cobro <include> Registrar facturación de servicio
+-Autorizar cobro con tarjeta <include> Registrar cobro
