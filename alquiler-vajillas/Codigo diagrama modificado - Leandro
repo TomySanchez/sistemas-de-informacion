@@ -1,0 +1,87 @@
+@startuml
+left to right direction
+actor "Encargado de Atención" as EA
+actor "Dueño" as D
+actor "Encargado de Control" as EC
+
+rectangle "Sistema de Alquiler de Vajillas" {
+  usecase "Consultar datos de cliente" as U1
+  usecase "Registrar cliente" as U2
+  usecase "Registrar pedido" as U3
+  usecase "Modificar datos de cliente" as U4
+  usecase "Registrar descuento" as U5
+  usecase "Consultar calificación de cliente" as U6
+  usecase "Eliminar calificación de cliente" as U7
+  usecase "Consultar disponibilidad de vajilla" as U8
+  usecase "Consultar precio de vajilla" as U9
+  usecase "Cambiar stock de vajilla" as U10
+  usecase "Registrar factura" as U11
+  usecase "Registrar cobro" as U12
+  usecase "Autorizar cobro con tarjeta" as U13
+  usecase "Registrar cobro inicial" as U14
+  usecase "Registrar cobro final" as U15
+  usecase "Registrar cobro por daños" as U16
+  usecase "Cambiar estado de pedido a señado" as U17
+  usecase "Cambiar estado de pedido a abonado" as U18
+  usecase "Cambiar estado de factura a pagada" as U19
+  usecase "Registrar factura por daños" as U20
+  usecase "Consultar vajilla dañada" as U21
+  usecase "Calificar cliente" as U22
+  usecase "Modificar calificación de cliente" as U23
+  usecase "Determinar calificación del cliente" as U24
+  usecase "Verificar vajilla" as U25
+  usecase "Registrar vajilla dañada" as U26
+  usecase "Registrar devolución" as U27
+  usecase "Cambiar estado de pedido a cumplido" as U28
+  usecase "Registrar observaciones de vajilla" as U29
+  usecase "Consultar pedido" as U30
+  usecase "Registrar facturación de servicio" as U31
+}
+
+' Relaciones del Encargado de Atención (EA)
+EA --> U1
+EA --> U2
+EA --> U3
+U2 .down.> U3 : <include>
+EA --> U4
+EA --> U5
+EA --> U6
+EA --> U7
+EA --> U8
+EA --> U9
+EA --> U10
+EA --> U11
+EA --> U12
+U12 .down.> U11 : <include>
+EA --> U13
+U13 .down.> U12 : <include>
+EA --> U14
+EA --> U15
+EA --> U16
+EA --> U17
+EA --> U18
+EA --> U19
+EA --> U20
+EA --> U21
+EA --> U31
+
+' Relaciones del Dueño (D)
+D --> U22
+D --> U23
+D --> U6
+U23 .down.> U6 : <include>
+D --> U7
+D --> U1
+D --> U24
+U24 .down.> U6 : <include>
+
+' Relaciones del Encargado de Control (EC)
+EC --> U30
+U30 .down.> U3 : <include>
+EC --> U25
+EC --> U26
+EC --> U27
+EC --> U28
+EC --> U29
+
+@enduml
