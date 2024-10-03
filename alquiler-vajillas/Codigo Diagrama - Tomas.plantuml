@@ -1,0 +1,69 @@
+@startuml
+left to right direction
+actor "Encargado de Atención" as EA
+actor "Dueño" as D
+actor "Encargado de Control" as EC
+
+rectangle "Sistema de Alquiler de Vajillas" {
+  usecase "Consultar datos de cliente" as U1
+  usecase "Registrar cliente" as U2
+  usecase "Registrar pedido" as U3
+  usecase "Modificar pedido" as U4
+  usecase "Registrar descuento" as U5
+  usecase "Consultar calificación de cliente" as U6
+  usecase "Consultar disponibilidad de vajilla" as U7
+  usecase "Consultar precio de vajilla" as U8
+  usecase "Cambiar stock de vajilla" as U9
+  usecase "Registrar factura" as U10
+  usecase "Registrar cobro inicial" as U11
+  usecase "Registrar cobro final" as U12
+  usecase "Registrar cobro con tarjeta" as U13
+  usecase "Cambiar estado de pedido a señado" as U14
+  usecase "Registrar cobro por daños" as U15
+  usecase "Cambiar estado de pedido a abonado" as U16
+  usecase "Cambiar estado de factura a pagada" as U17
+  usecase "Registrar factura por daños" as U18
+  usecase "Consultar vajilla dañada" as U19
+  usecase "Calificar cliente" as U20
+  usecase "Modificar calificación de cliente" as U21
+  usecase "Verificar vajilla" as U22
+  usecase "Registrar vajilla dañada" as U23
+  usecase "Registrar devolución" as U24
+  usecase "Cambiar estado de vajilla" as U25
+  usecase "Cambiar estado de pedido a cumplido" as U26
+  usecase "Registrar observaciones de vajilla" as U27
+}
+
+EA --> U1
+EA --> U2
+EA --> U3 : <extend> U2
+EA --> U4
+EA --> U5 : <extend> U6
+EA --> U7
+EA --> U8
+EA --> U9
+EA --> U10
+EA --> U11 : <include> U10
+EA --> U14 : <include> U11
+EA --> U12
+EA --> U15 : <include> U18
+EA --> U16 : <include> U12
+EA --> U17 : <include> U12
+EA --> U18 : <include> U19
+EA --> U13 : <extend> U12
+
+D --> U20 : <include> U1
+D --> U6
+D --> U21
+U21 .down.> U6 : <include>
+
+EC --> U22
+U22 .down.> U3 : <include>
+EC --> U23
+U23 .down.> U22 : <include>
+EC --> U24
+EC --> U25
+EC --> U26
+EC --> U27
+
+@enduml
